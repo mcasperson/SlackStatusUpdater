@@ -71,7 +71,8 @@ def invite_users(client, channel_id):
 
 
 def post_update_message(client, channel_id):
-    text = "Status: " + args.incident_status \
+    text = "===== STATUS UPDATE =====" \
+           + "\nStatus: " + args.incident_status \
            + "\nEstimated Resolution: " + args.estimated_time_to_resolution \
            + "\nUpdater: " + args.updater
     if len(args.custom_message) != 0:

@@ -30,6 +30,11 @@ parser.add_argument('--estimatedTimeToResolution',
                     action='store',
                     help='The estimated time before the incident is resolved',
                     required=True)
+parser.add_argument('--updater',
+                    dest='updater',
+                    action='store',
+                    help='The user posting the update message',
+                    required=True)
 parser.add_argument('--customMessage',
                     dest='custom_message',
                     action='store',
@@ -66,7 +71,9 @@ def invite_users(client, channel_id):
 
 
 def post_update_message(client, channel_id):
-    text = "Status: " + args.incident_status + "\nEstimated Resolution: " + args.estimated_time_to_resolution
+    text = "Status: " + args.incident_status \
+           + "\nEstimated Resolution: " + args.estimated_time_to_resolution \
+           + "\nUpdater: " + args.updater
     if len(args.custom_message) != 0:
         text = text + "\nMessage: " + args.custom_message
     client.chat_postMessage(channel=channel_id, text=text)

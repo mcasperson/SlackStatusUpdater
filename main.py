@@ -45,7 +45,7 @@ args = parser.parse_args()
 
 def create_slack_channel(client, channel_name):
     channel = client.conversations_create(name=channel_name)
-    return channel
+    return channel.data["channel"]["id"]
 
 
 def find_slack_channel(client, channel_name):
